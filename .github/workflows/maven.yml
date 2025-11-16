@@ -46,8 +46,15 @@ jobs:
       # --------------------------
       # Gitleaks installation (OFFICIAL)
       # --------------------------
-      - name: Install Gitleaks
-        run: sudo apt install gitleaks -y 
+
+      
+      - name: Install Gitleaks (stable version)
+        run: |
+            wget https://github.com/gitleaks/gitleaks/releases/download/v8.29.0/gitleaks_8.29.0_linux_x64.tar.gz -O gitleaks.tar.gz
+            tar -xzf gitleaks.tar.gz
+            sudo mv gitleaks /usr/local/bin/gitleaks
+            sudo chmod +x /usr/local/bin/gitleaks
+
 
       - name: Run Gitleaks Code Scan
         run: gitleaks detect -s . -r gitleaks-report.json -f json
