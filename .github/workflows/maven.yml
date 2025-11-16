@@ -123,14 +123,9 @@ jobs:
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-jar
+          name: app-jar-${{ github.run_number }}
           path: target/*.jar 
 
-      - name: Upload JAR artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-jar
-          path: target/*.jar
 
       # SonarQube
       - uses: actions/checkout@v4
