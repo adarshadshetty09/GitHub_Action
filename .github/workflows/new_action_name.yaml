@@ -1,0 +1,30 @@
+# .github/workflows/simple_message.yml
+
+name: Simple Message Printer
+
+# 1. Define the Event that Triggers the Workflow
+on:
+  # Triggers when code is pushed to the 'main' branch
+  # or when code is pushed to the 'feature/new-ci-workflow' branch
+  push:
+    branches:
+      - main
+      - feature/new-ci-workflow
+
+# 2. Define the Jobs
+jobs:
+  print_message_job:
+    # 3. Specify the Runner (the environment where the job runs)
+    runs-on: ubuntu-latest
+
+    # 4. Define the Steps within the Job
+    steps:
+      # Step 1: Just prints a simple message using the 'run' keyword
+      - name: Greet the World
+        run: echo "Hello from your GitHub Action! This is a simple test."
+
+      # Step 2: Print some context about the runner
+      - name: Display Runner Environment
+        run: |
+          echo "Workflow executed on a ${{ runner.os }} machine."
+          echo "The current working directory is $(pwd)"
